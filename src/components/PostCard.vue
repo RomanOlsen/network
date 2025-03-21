@@ -11,6 +11,7 @@ defineProps({
 
 <template>
   <div>Card</div>
+  {{ postProp.body }}
 </template>
 
 
