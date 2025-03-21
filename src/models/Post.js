@@ -5,8 +5,9 @@ export class Post{
     this.CreatorId = data.CreatorId
     this.LikeIds = data.LikeIds
     this.Creator = data.creator // Virtual
-    this.Likes = data.Likes
+    this.Likes = data.likes
     this.id = data.id
+    // this.likeCount = data.likes
 
     this.createdAt = new Date(data.createdAt)
 
