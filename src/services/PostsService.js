@@ -4,6 +4,9 @@ import { Post } from "@/models/Post.js"
 import { AppState } from "@/AppState.js"
 
 class PostsService{
+  postPost() {
+    throw new Error('Method not implemented.')
+  }
   async getPosts(){
     const response = await api.get('api/posts')
     logger.log(response.data)

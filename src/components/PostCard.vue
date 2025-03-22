@@ -11,7 +11,11 @@ defineProps({
 async function likePost(postID) {
   try {
     await postsService.likePost(postID)
-    Pop.success('Liked!')
+    // if (postProp.likes) {
+      
+    // }
+    // Pop.toast('Liking')
+    Pop.toast('Toggling like')
   }
   catch (error) {
     Pop.error(error);
@@ -35,12 +39,12 @@ async function likePost(postID) {
     <div class="card-body text-center">
       <p>{{ postProp.body }}</p>
       <img class="post-photo" :src="postProp.ImgUrl" alt="Image">
-      <div>{{ postProp.Likes.length }} likes</div>
     </div>
     <div class="card-footer bg-light">
 
       <div class="text-center">
-        <button @click="likePost(postProp.id)" class="btn btn-pink px-5 rounded">Like <span class="mdi mdi-heart"></span></button>
+        <button @click="likePost(postProp.id)" class="btn btn-pink px-5 rounded"> <span class="mdi mdi-heart"></span>     {{ postProp.Likes.length }} likes
+          </button>
       </div>
     </div>
   </div>
