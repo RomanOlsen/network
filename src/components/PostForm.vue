@@ -14,6 +14,7 @@ const account = AppState.account
 async function postPost() {
   try {
     await postsService.postPost(formData.value)
+    Pop.success('Posted!')
   }
   catch (error) {
     Pop.error(error);
