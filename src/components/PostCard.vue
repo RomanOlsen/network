@@ -5,8 +5,10 @@ import { postsService } from '@/services/PostsService.js';
 import { profileService } from '@/services/ProfileService.js';
 import { Pop } from '@/utils/Pop.js';
 import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 const account = computed(() => AppState.account)
+
 
 defineProps({
   postProp: { type: Post, required: true }
@@ -53,8 +55,10 @@ async function viewProfile(params) {
     <div class="card-header bg-light">
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">
-          <img @click="viewProfile(postProp.CreatorId)" :src="postProp.Creator.picture" class="creator-photo"
-            alt="Creator photo">
+          <RouterLink :to="{ name: 'Profile Page', params: { id: postProp.id}}">
+            <img @click="viewProfile(postProp.CreatorId)" :src="postProp.Creator.picture" class="creator-photo"
+              alt="Creator photo">
+          </RouterLink>
           <span class="ps-3">{{ postProp.Creator.name }}</span>
         </div>
         <div class="d-flex align-items-center">
