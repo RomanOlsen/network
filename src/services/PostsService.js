@@ -4,6 +4,21 @@ import { Post } from "@/models/Post.js"
 import { AppState } from "@/AppState.js"
 
 class PostsService{
+  
+  async getProfilePosts(id) {
+    const response = await api.get(`api/posts`) // ANCHOR use account path not posts! NVM
+    console.log('basic',response);
+    console.log(id);
+    
+    const posts = response.data.posts.map(pojo => new Post(pojo))
+    AppState.posts = posts
+
+  const profilePosts = AppState.posts.filter((element) => element.creatorId == id)
+  AppState.posts = profilePosts
+  console.log('profile posts', profilePosts);
+  
+
+  }
 async changePostPage(direction) {
 
   const response = await api.get(`api/posts?page=${AppState.page + direction}`)
@@ -33,7 +48,7 @@ async changePostPage(direction) {
     logger.log(response.data)
     const postIndex = AppState.posts.findIndex(post => post.id == postID)
     AppState.posts.splice(postIndex, 1, new Post(response.data))
-    
+
     // Another get request?
     // const response2 = await api.get(`api/posts/${postID}`) 
     // AppState.posts.findIndex(post => post.id == postID).Likes = response.data

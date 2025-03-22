@@ -48,14 +48,14 @@ async function deletePost(params) {
     <div class="card-header bg-light">
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">
-          <RouterLink :to="{ name: 'Profile Page', params: { id: postProp.CreatorId } }">
-            <img :src="postProp.Creator.picture" class="creator-photo" alt="Creator photo">
+          <RouterLink :to="{ name: 'Profile Page', params: { id: postProp.creatorId } }">
+            <img :src="postProp.creator.picture" class="creator-photo" alt="Creator photo">
           </RouterLink>
-          <span class="ps-3">{{ postProp.Creator.name }}</span>
+          <span class="ps-3">{{ postProp.creator.name }}</span>
         </div>
         <div class="d-flex align-items-center">
           <span>Posted: {{ postProp.createdAt.toLocaleDateString() }}</span>
-          <button @click="deletePost(postProp.id)" v-if="account?.id == postProp.CreatorId"
+          <button @click="deletePost(postProp.id)" v-if="account?.id == postProp.creatorId"
             class="btn btn-outline-danger ms-3">Delete post</button>
           <!-- Roman dont forget the question mark -->
 
@@ -64,13 +64,13 @@ async function deletePost(params) {
     </div>
     <div class="card-body text-center">
       <p>{{ postProp.body }}</p>
-      <img class="post-photo" :src="postProp.ImgUrl" alt="Image">
+      <img class="post-photo" :src="postProp.imgUrl" alt="Image">
     </div>
     <div class="card-footer bg-light">
 
       <div class="text-center">
         <button @click="likePost(postProp.id)" class="btn btn-pink px-5 rounded"> <span class="mdi mdi-heart"></span> {{
-          postProp.Likes.length }} likes
+          postProp.likes.length }} likes
         </button>
       </div>
     </div>

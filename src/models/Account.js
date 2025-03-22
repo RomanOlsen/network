@@ -5,7 +5,13 @@ export class Account {
    * @property {string} email
    * @property {string} name
    * @property {string} picture
-   * 
+   * @property {string} bio
+   * @property {string} class
+   * @property {string} coverImg
+   * @property {string} resume
+   * @property {string} linkedin
+   * @property {string} github
+   * @property {string} graduated
    * @param {AccountData} data
    */
   constructor(data) {
@@ -14,5 +20,12 @@ export class Account {
     this.name = data.name
     this.picture = data.picture
     // TODO add additional properties if needed
+    this.bio = data.bio
+    this.class = data.class
+    this.coverImg = data.coverImg
+    this.resume = data.resume
+    this.linkedin = data.linkedin
+    this.github = data.github
+    this.graduated = data.graduated
   }
 }
