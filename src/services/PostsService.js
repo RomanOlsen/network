@@ -14,22 +14,28 @@ class PostsService{
     const pageTotal = response.data.totalPages
 
 
+
+
     // ANCHOR felt like a genius!
     for (let page = 1; page <= pageTotal; page++) {
       const response = await api.get(`api/posts?page=${page}`)
-      console.log('im a for loop',response.data);
+
+      logger.log('im a for loop',response.data);
       
-      
+       const posts = response.data.posts.map(pojo => new Post(pojo))
+      AppState.posts.push(...posts)
+      // AppState.posts.
+      // AppState.posts.
     }
 
     
 
-    const posts = response.data.posts.map(pojo => new Post(pojo))
-    AppState.posts = posts
+console.log('This should be ALL posts', AppState.posts);
 
-  const profilePosts = AppState.posts.filter((element) => element.creatorId == id)
-  AppState.posts = profilePosts
-  console.log('profile posts', profilePosts);
+
+  // const profilePosts = AppState.posts.filter((element) => element.creatorId == id)
+  // AppState.posts = profilePosts
+  // console.log('profile posts', profilePosts);
   
 
   }

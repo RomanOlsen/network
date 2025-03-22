@@ -14,3 +14,7 @@ The content under the CodeWorks®, LLC Organization and all of the individual re
 
 
 <img src="https://bcw.blob.core.windows.net/public/img/7815839041305055" width="125">
+
+// Copilot questions:
+How do I post the const posts into my Appstate array without having each response's array be its own spot in the Appstate array, and instead have object fill that place
+
