@@ -33,9 +33,9 @@ class PostsService{
 console.log('This should be ALL posts', AppState.posts);
 
 
-  // const profilePosts = AppState.posts.filter((element) => element.creatorId == id)
-  // AppState.posts = profilePosts
-  // console.log('profile posts', profilePosts);
+   const profilePosts = AppState.posts.filter((element) => element.creatorId == id)
+   AppState.posts = profilePosts
+   console.log('profile posts', profilePosts);
   
 
   }
