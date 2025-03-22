@@ -5,7 +5,7 @@ import { AppState } from "@/AppState.js"
 
 class PostsService{
   async deletePost(postID) {
-    const response = await api.delete(`api/posts/${postID}`)
+    await api.delete(`api/posts/${postID}`) // const response unneeded here
     const postIndex = AppState.posts.findIndex(post => post.id == postID)
     AppState.posts.splice(postIndex, 1)
   }

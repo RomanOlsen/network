@@ -6,7 +6,7 @@ import { ref } from 'vue';
 
 const formData = ref({ // Whats inside is the value
   body: '',
-  imageUrl: '',
+  imgUrl: '',
 })
 
 const account = AppState.account
@@ -32,13 +32,13 @@ async function postPost() {
     <form @submit.prevent="postPost()">
       <div class="d-flex align-items-center justify-content-between gap-3 mx-3 mt-3">
         <img class="creator-photo" :src="account.picture" alt="">
-        <textarea v-model="formData.body" class="post-body" type="text" maxlength="5000" placeholder="What's on your mind?"
-          required> What's on your mind? </textarea>
+        <textarea v-model="formData.body" class="post-body" type="text" maxlength="5000"
+          placeholder="What's on your mind?" required></textarea>
       </div>
       <div class="card-footer text-light">
         <div class="d-flex justify-content-between align-items-center">
           <span>Add a daily Quote here</span>
-          <input v-model="formData.imageUrl" maxlength="500" type="url" placeholder="Picture Link" class="post-imgLink">
+          <input v-model="formData.imgUrl" maxlength="500" type="url" placeholder="Picture Link" class="post-imgLink">
           <button type="submit" class="btn btn-vue">Post</button>
         </div>
       </div>
@@ -54,7 +54,7 @@ async function postPost() {
 }
 
 .post-imgLink {
-  width: 30%;
+  width: 50%;
 }
 
 .creator-photo {
