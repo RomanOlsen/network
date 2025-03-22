@@ -7,9 +7,23 @@ class PostsService{
   
   async getProfilePosts(id) {
     const response = await api.get(`api/posts`) // ANCHOR use account path not posts! NVM
-    console.log('basic',response);
-    console.log(id);
+    // console.log('basic',response);
+    // console.log(id);
+    // console.log(response.data.totalPages);
+
+    const pageTotal = response.data.totalPages
+
+
+    // ANCHOR felt like a genius!
+    for (let page = 1; page <= pageTotal; page++) {
+      const response = await api.get(`api/posts?page=${page}`)
+      console.log('im a for loop',response.data);
+      
+      
+    }
+
     
+
     const posts = response.data.posts.map(pojo => new Post(pojo))
     AppState.posts = posts
 
