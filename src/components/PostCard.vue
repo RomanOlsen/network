@@ -38,14 +38,7 @@ async function deletePost(params) {
 
 }
 
-async function viewProfile(params) {
-  try {
-    await profileService.viewProfile(params)
-  }
-  catch (error) {
-    Pop.error(error);
-  }
-}
+
 
 </script>
 
@@ -55,9 +48,8 @@ async function viewProfile(params) {
     <div class="card-header bg-light">
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">
-          <RouterLink :to="{ name: 'Profile Page', params: { id: postProp.id}}">
-            <img @click="viewProfile(postProp.CreatorId)" :src="postProp.Creator.picture" class="creator-photo"
-              alt="Creator photo">
+          <RouterLink :to="{ name: 'Profile Page', params: { id: postProp.CreatorId } }">
+            <img :src="postProp.Creator.picture" class="creator-photo" alt="Creator photo">
           </RouterLink>
           <span class="ps-3">{{ postProp.Creator.name }}</span>
         </div>
