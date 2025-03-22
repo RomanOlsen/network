@@ -2,6 +2,7 @@
 import { AppState } from '@/AppState.js';
 import { Post } from '@/models/Post.js';
 import { postsService } from '@/services/PostsService.js';
+import { profileService } from '@/services/ProfileService.js';
 import { Pop } from '@/utils/Pop.js';
 import { computed } from 'vue';
 
@@ -29,10 +30,19 @@ async function deletePost(params) {
   try {
     await postsService.deletePost(params)
   }
-  catch (error){
+  catch (error) {
     Pop.error(error);
   }
-  
+
+}
+
+async function viewProfile(params) {
+  try {
+    await profileService.viewProfile(params)
+  }
+  catch (error) {
+    Pop.error(error);
+  }
 }
 
 </script>
@@ -43,12 +53,14 @@ async function deletePost(params) {
     <div class="card-header bg-light">
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center">
-          <img :src="postProp.Creator.picture" class="creator-photo" alt="Creator photo">
+          <img @click="viewProfile(postProp.CreatorId)" :src="postProp.Creator.picture" class="creator-photo"
+            alt="Creator photo">
           <span class="ps-3">{{ postProp.Creator.name }}</span>
         </div>
         <div class="d-flex align-items-center">
           <span>Posted: {{ postProp.createdAt.toLocaleDateString() }}</span>
-          <button @click="deletePost(postProp.id)" v-if="account?.id == postProp.CreatorId" class="btn btn-outline-danger ms-3">Delete post</button>
+          <button @click="deletePost(postProp.id)" v-if="account?.id == postProp.CreatorId"
+            class="btn btn-outline-danger ms-3">Delete post</button>
           <!-- Roman dont forget the question mark -->
 
         </div>

@@ -10,6 +10,8 @@ export const AppState = reactive({
   // /** @type {import('./models/Post.js').Post} user info from the database*/
   posts: [],
   page: 0, // have it stay 0 but then change once get request fires
-  maxPage: 0
+  maxPage: 0,
+
+  activeProfile: null,
 })
 
