@@ -25,7 +25,7 @@ const account = computed(() => AppState.account)
           <a :href="account.coverImg"
             v-if="account.coverImg == 'https://images.unsplash.com/photo-1586829135343-132950070391?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80'">The
             Default!</a>
-          <span v-else-if="account.coverImg">here</span>
+          <a :href="account.coverImg" v-else-if="account.coverImg">here</a>
           <span v-else>None specified</span>
         </div>
         <div>Bio:
