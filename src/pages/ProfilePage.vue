@@ -13,11 +13,17 @@ const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
 const profilePost = computed(() => AppState.profilePostPageContent)
+const posts = computed(()=> AppState.posts)
 
 
-onMounted(() =>
+
+onMounted(() => {
   viewProfile()
+  // getProfilePosts(route.params.id)
+}
 )
+
+
 
 async function getProfilePosts(params) {
   try {
@@ -32,7 +38,7 @@ async function viewProfile() {
   try {
     const profileID = route.params.id
     await profileService.viewProfile(profileID)
-    getProfilePosts(profileID)
+    getProfilePosts(profileID) // ANCHOR not needed computed function for this, bc of this
   }
   catch (error) {
     Pop.error(error, 'a');
@@ -91,7 +97,7 @@ async function viewProfile() {
         <h1 v-else> Loading... </h1>
       </div>
       <!-- ANCHOR unsure if this v-if helps at all -->
-      <div v-if="profilePost">
+      <div>
         <div class="col-12 mt-3" v-for="post in profilePost">
           <PostCard :post-prop="post" />
 

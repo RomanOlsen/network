@@ -6,6 +6,9 @@ import { AppState } from "@/AppState.js"
 class PostsService{
   async changeProfilePostPage(direction) {
     const amount = AppState.profilePagesShownPerPage
+    if (direction == null) {
+      direction = 0
+    }
     AppState.page += direction
     console.log('pages', AppState.page);
     const skipAmount = (AppState.page * amount) - amount
@@ -79,6 +82,7 @@ AppState.maxPage = newPageCount
 
   logger.log('total pages here is ', newPageCount) 
   
+this.changeProfilePostPage()
 
   }
 async changePostPage(direction) {
