@@ -32,12 +32,13 @@ function logout() {
           <div class="list-group">
             <RouterLink :to="{ name: 'Account' }">
               <div class="list-group-item dropdown-item list-group-item-action">
-                Your Account
+                Your Account Stats
               </div>
             </RouterLink>
             <!-- NOTE wasnt sure whether to utilize Account page or make a new one. But this below WAS working. -->
             <div v-if="account">
-              <RouterLink :to="{ name: 'Profile Page', params: account }">
+
+              <RouterLink :to="{ name: 'Profile Page', params: { id: account.id } }">
                 <div class="list-group-item dropdown-item list-group-item-action">
                   View and Edit Your Profile!
                 </div>

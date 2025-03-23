@@ -9,6 +9,9 @@ const formData = ref({ // Whats inside is the value
   imgUrl: '',
 })
 
+const quoteRange = AppState.quote.length
+const random = Math.round(Math.random() * quoteRange)
+const quote = AppState.quote[random - 1]
 const account = AppState.account
 
 async function postPost() {
@@ -38,7 +41,7 @@ async function postPost() {
       </div>
       <div class="card-footer text-light">
         <div class="d-flex justify-content-between align-items-center">
-          <span>Add a daily Quote here</span>
+          <span>"{{ quote }}"</span>
           <input v-model="formData.imgUrl" maxlength="500" type="url" placeholder="Picture Link" class="post-imgLink">
           <button type="submit" class="btn btn-vue">Post</button>
         </div>

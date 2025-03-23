@@ -30,6 +30,7 @@ const routes = [
   {
     path: '/profile/:id',
     name: 'Profile Page',
+    // params: 'id',
     component: loadPage('ProfilePage')
   },
 

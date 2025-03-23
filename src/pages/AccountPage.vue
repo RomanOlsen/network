@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { AppState } from '../AppState.js';
+import EditAccountForm from '@/components/EditAccountForm.vue';
 
 const account = computed(() => AppState.account)
 
@@ -61,6 +62,15 @@ const account = computed(() => AppState.account)
           <span v-else>None specified</span>
         </div>
 
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+            <EditAccountForm />
+          </div>
+        </div>
       </div>
 
 

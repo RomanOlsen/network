@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import EditAccountForm from '@/components/EditAccountForm.vue';
 import PostCard from '@/components/PostCard.vue';
 import PreviousNext from '@/components/Previous&Next.vue';
 import { postsService } from '@/services/PostsService.js';
@@ -13,7 +14,8 @@ const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
 const profilePost = computed(() => AppState.profilePostPageContent)
-const posts = computed(()=> AppState.posts)
+const posts = computed(() => AppState.posts)
+const account = computed(() => AppState.account)
 
 
 
@@ -24,8 +26,8 @@ onMounted(() => {
 )
 
 watch(route, () => {
-   viewProfile()
- })
+  viewProfile()
+})
 
 
 
@@ -56,6 +58,7 @@ async function viewProfile() {
 <template>
   <div class="container">
     <div class="row">
+
       <div class="col-12">
         <div v-if="profile" class="card mt-2 bg-primary text-light">
           <div class="card-header m-0 p-0">
@@ -100,6 +103,11 @@ async function viewProfile() {
         </div>
         <h1 v-else> Loading... </h1>
       </div>
+      <div v-if="account?.id == profile?.id" class="col-12">
+        <EditAccountForm />
+      </div>
+
+
       <!-- ANCHOR unsure if this v-if helps at all -->
       <div>
         <div class="col-12 mt-3" v-for="post in profilePost" :key="post.id">

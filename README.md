@@ -16,5 +16,8 @@ The content under the CodeWorks®, LLC Organization and all of the individual re
 <img src="https://bcw.blob.core.windows.net/public/img/7815839041305055" width="125">
 
 // Copilot questions:
+1.
 How do I post the const posts into my Appstate array without having each response's array be its own spot in the Appstate array, and instead have object fill that place
 
+2.
+"[Vue Router warn]: Discarded invalid param(s) "email", "name", "picture", "bio", "class", "coverImg", "resume", "linkedin", "github", "graduated", "createdAt", "updatedAt" when navigating. See https://github.com/vuejs/router/blob/main/packages/router/CHANGELOG.md#414-2022-08-22 for more details."

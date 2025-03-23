@@ -19,5 +19,7 @@ export const AppState = reactive({
 
   posters: [], // ads
 
-})
+  quote: ['The secret of staying young is to live honestly, eat slowly, and lie about your age.', 'They say that God is everywhere, and yet we always think of Him as somewhat of a recluse.', 'Dealing with network executives is like being nibbled to death by ducks.', 'Life is a moderately good play with a badly written third act.', `If you don't accept responsibility for your own actions, then you are forever chained to a position of defense.`, `Even on the most exalted throne in the world we are only sitting on our own bottom.`, 'Rich gifts wax poor when givers prove unkind.', 'If my hands are fully occupied in holding on to something, I can neither give nor receive.',  ]
 
+
+})

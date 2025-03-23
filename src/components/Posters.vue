@@ -80,7 +80,7 @@ function changePoster(poster) {
   // height: 100dvh;
   position: absolute;
   top: 50%;
-  width: 30dvh;
+  width: 25dvh;
   left: 2.2dvh;
   z-index: 1;
 
@@ -91,7 +91,7 @@ function changePoster(poster) {
   // height: 100dvh;
   position: absolute;
   top: 50%;
-  width: 30dvh;
+  width: 25dvh;
   //  aspect-ratio: ;
   //  left: 120dvh;
   right: 2.2dvh;
