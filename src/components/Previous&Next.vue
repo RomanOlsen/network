@@ -38,7 +38,8 @@ async function changePostPage(params) {
 changePostPage(-1)
 } else
 <template>
-  <div class="d-flex justify-content-evenly align-items-center py-5">
+   <!-- this v-if probably isnt helping -->
+  <div v-if="page != 0" class="d-flex justify-content-evenly align-items-center py-5">
     <button :disabled="page < 2" @click="
       changePostPage(-1)" class="btn btn-outline-light">
       <span class="mdi mdi-arrow-left"> More Recent</span>

@@ -11,7 +11,11 @@ export class Account {
    * @property {string} resume
    * @property {string} linkedin
    * @property {string} github
-   * @property {string} graduated
+   * @property {boolean} graduated
+   * @property {any} createdAt
+   *    * @property {any} updatedAt
+
+
    * @param {AccountData} data
    */
   constructor(data) {
@@ -27,5 +31,7 @@ export class Account {
     this.linkedin = data.linkedin
     this.github = data.github
     this.graduated = data.graduated
+    this.createdAt = new Date(data.createdAt)
+    this.updatedAt = new Date(data.updatedAt)
   }
 }

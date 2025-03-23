@@ -32,16 +32,17 @@ function logout() {
           <div class="list-group">
             <RouterLink :to="{ name: 'Account' }">
               <div class="list-group-item dropdown-item list-group-item-action">
-                Manage Account
+                Your Account
               </div>
             </RouterLink>
+            <!-- NOTE wasnt sure whether to utilize Account page or make a new one. But this below WAS working. -->
             <div v-if="account">
-            <RouterLink :to="{ name: 'Profile Page', params: account }">
-              <div class="list-group-item dropdown-item list-group-item-action">
-                View Your Profile!
-              </div>
-            </RouterLink>
-          </div>
+              <RouterLink :to="{ name: 'Profile Page', params: account }">
+                <div class="list-group-item dropdown-item list-group-item-action">
+                  View and Edit Your Profile!
+                </div>
+              </RouterLink>
+            </div>
             <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
               <i class="mdi mdi-logout"></i>
               logout

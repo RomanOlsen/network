@@ -7,7 +7,9 @@ class PostsService{
   async search(query) {
     const response = await api.get(`api/posts?query=${query}`)
     logger.log(response.data)
-
+      if (response.data.posts.length == 0) {
+        throw new Error(`We can't find any posts matching ${query}!`) //'Please enter something else'
+      }
       const posts = response.data.posts.map(pojo => new Post(pojo))
       AppState.posts = posts
       AppState.page = response.data.page

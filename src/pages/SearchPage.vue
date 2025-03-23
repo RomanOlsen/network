@@ -12,7 +12,10 @@ const searchData = ref('')
 const posts = computed(() => AppState.posts)
 const pages = computed(() => AppState.page)
 
-onMounted(() => AppState.posts = [])
+onMounted(() => {
+  AppState.posts = []
+  AppState.page = 0
+})
 
 async function search() {
   try {

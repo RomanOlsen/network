@@ -5,7 +5,7 @@ import PreviousNext from '@/components/Previous&Next.vue';
 import { postsService } from '@/services/PostsService.js';
 import { profileService } from '@/services/ProfileService.js';
 import { Pop } from '@/utils/Pop.js';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 
@@ -22,6 +22,10 @@ onMounted(() => {
   // getProfilePosts(route.params.id)
 }
 )
+
+watch(route, () => {
+   viewProfile()
+ })
 
 
 
