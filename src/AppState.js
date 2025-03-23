@@ -15,6 +15,9 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account} user info from the database*/
   activeProfile: null,
   profilePostPageContent: [], // NOTE all profile's post are stored is posts but this is for specific pages
-  profilePagesShownPerPage: 5
+  profilePagesShownPerPage: 5,
+
+  posters: [], // ads
+
 })
 

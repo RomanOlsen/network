@@ -114,6 +114,7 @@ async changePostPage(direction) {
     logger.log(response.data)
     const postIndex = AppState.posts.findIndex(post => post.id == postID)
     AppState.posts.splice(postIndex, 1, new Post(response.data))
+    AppState.profilePostPageContent.splice(postIndex, 1, new Post(response.data)) // updates it from profile page!!!
 
     // Another get request?
     // const response2 = await api.get(`api/posts/${postID}`) 

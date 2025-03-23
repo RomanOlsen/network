@@ -1,6 +1,9 @@
 <script setup>
 import Navbar from './components/Navbar.vue';
 import { RouterView } from 'vue-router';
+import Posters from './components/Posters.vue';
+
+// const posters = computed(()=> AppState.posters)
 
 </script>
 
@@ -9,6 +12,7 @@ import { RouterView } from 'vue-router';
     <Navbar />
   </header>
   <main>
+    <Posters />
     <RouterView />
   </main>
   <!-- <footer class="text-center">

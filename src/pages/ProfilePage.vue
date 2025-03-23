@@ -98,7 +98,7 @@ async function viewProfile() {
       </div>
       <!-- ANCHOR unsure if this v-if helps at all -->
       <div>
-        <div class="col-12 mt-3" v-for="post in profilePost">
+        <div class="col-12 mt-3" v-for="post in profilePost" :key="post.id">
           <PostCard :post-prop="post" />
 
         </div>
