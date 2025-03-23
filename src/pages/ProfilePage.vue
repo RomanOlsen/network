@@ -103,8 +103,10 @@ async function viewProfile() {
         </div>
         <h1 v-else> Loading... </h1>
       </div>
-      <div v-if="account?.id == profile?.id" class="col-12">
-        <EditAccountForm />
+      <div v-if="account && account?.id == profile?.id" class="col-12">
+        <div class="text-center">
+          <EditAccountForm />
+        </div>
       </div>
 
 

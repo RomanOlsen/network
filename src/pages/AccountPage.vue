@@ -22,7 +22,10 @@ const account = computed(() => AppState.account)
           <span v-else>None specified</span>
         </div>
         <div>Cover Photo:
-          <a :href="account.coverImg" v-if="account.coverImg">here</a>
+          <a :href="account.coverImg"
+            v-if="account.coverImg == 'https://images.unsplash.com/photo-1586829135343-132950070391?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80'">The
+            Default!</a>
+          <span v-else-if="account.coverImg">here</span>
           <span v-else>None specified</span>
         </div>
         <div>Bio:
@@ -64,6 +67,10 @@ const account = computed(() => AppState.account)
 
       </div>
 
+
+
+
+
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -72,10 +79,6 @@ const account = computed(() => AppState.account)
           </div>
         </div>
       </div>
-
-
-
-
 
 
     </div>

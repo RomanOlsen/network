@@ -14,9 +14,26 @@ class AccountService {
   }
 
   async updateAccount(data){
-    const response = await api.get(`/account`, data)
-    AppState.account = new Account(response.data)
-    console.log(response.data);
+
+      if (data.name == '') {
+        data.name = AppState.account.name
+      }
+
+      if (data.coverImg == '') {
+        data.coverImg = 'https://images.unsplash.com/photo-1586829135343-132950070391?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80'
+      }
+      // if (data.graduated == '') {
+      //   data.graduated = AppState.account.graduated
+      // }
+      // if (data.bio == '') {
+      //   data.bio = AppState.account.bio
+      // }
+      const response = await api.put(`/account`, data)
+      AppState.account = new Account(response.data)
+       AppState.activeProfile = new Account(response.data)
+      logger.log(response.data);
+
+
     
   }
 
