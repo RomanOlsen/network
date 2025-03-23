@@ -4,6 +4,30 @@ import { Post } from "@/models/Post.js"
 import { AppState } from "@/AppState.js"
 
 class PostsService{
+  async changeProfilePostPage(direction) {
+    const amount = AppState.profilePagesShownPerPage
+    AppState.page += direction
+    console.log(AppState.page);
+    const skipAmount = (AppState.page * amount) - amount
+    console.log(skipAmount);
+    
+    // const currentShown = AppState.posts[skipAmount]
+    // const currentShown2 = AppState.posts[skipAmount + 1]
+    
+    // console.log(currentShown, currentShown2);
+AppState.profilePostPageContent = []
+    for (let index = skipAmount; index < (skipAmount+amount); index++) {
+      const newCard = AppState.profilePostPageContent.push(AppState.posts[index])
+      console.log(newCard);
+      
+      // if (AppState.posts[index].value == null) {
+      //   return
+      // }
+      
+    }
+    logger.log(AppState.profilePostPageContent)
+
+  }
   
   async getProfilePosts(id) {
     const response = await api.get(`api/posts`) // ANCHOR use account path not posts! NVM
@@ -24,18 +48,24 @@ class PostsService{
       
        const posts = response.data.posts.map(pojo => new Post(pojo))
       AppState.posts.push(...posts)
+
       // AppState.posts.
       // AppState.posts.
     }
-
-    
-
 console.log('This should be ALL posts', AppState.posts);
 
 
    const profilePosts = AppState.posts.filter((element) => element.creatorId == id)
    AppState.posts = profilePosts
    console.log('profile posts', profilePosts);
+
+AppState.page = 1
+const newPageCount =   Math.ceil(AppState.posts.length / 5) // 5 per profile page page
+AppState.maxPage = newPageCount
+
+
+
+  logger.log(newPageCount) 
   
 
   }

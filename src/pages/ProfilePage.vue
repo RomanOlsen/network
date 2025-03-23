@@ -1,6 +1,7 @@
 <script setup>
 import { AppState } from '@/AppState.js';
 import PostCard from '@/components/PostCard.vue';
+import PreviousNext from '@/components/Previous&Next.vue';
 import { postsService } from '@/services/PostsService.js';
 import { profileService } from '@/services/ProfileService.js';
 import { Pop } from '@/utils/Pop.js';
@@ -11,7 +12,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute()
 
 const profile = computed(() => AppState.activeProfile)
-const profilePost = computed(() => AppState.posts)
+const profilePost = computed(() => AppState.profilePostPageContent)
 
 
 onMounted(() =>
@@ -92,6 +93,9 @@ async function viewProfile() {
       <div class="col-12 mt-3" v-for="post in profilePost">
         <PostCard :post-prop="post" />
 
+      </div>
+      <div class="col-12">
+        <PreviousNext />
       </div>
     </div>
   </div>
