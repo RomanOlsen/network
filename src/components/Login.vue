@@ -35,6 +35,13 @@ function logout() {
                 Manage Account
               </div>
             </RouterLink>
+            <div v-if="account">
+            <RouterLink :to="{ name: 'Profile Page', params: account }">
+              <div class="list-group-item dropdown-item list-group-item-action">
+                View Your Profile!
+              </div>
+            </RouterLink>
+          </div>
             <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
               <i class="mdi mdi-logout"></i>
               logout

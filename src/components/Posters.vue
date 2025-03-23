@@ -62,9 +62,9 @@ function changePoster(poster) {
 
     <img @click="changePoster(1)" :src="poster2.tall" alt="Ad" class="poster2" id="poster2">
     <div class="d-flex justify-content-evenly mt-4">
-    <img @click="changePoster(2)" :src="poster1.banner" alt="Ad" class="poster1-alt d-none" id="poster1-alt">
-    <img @click="changePoster(2)" :src="poster2.banner" alt="Ad" class="poster2-alt d-none" id="poster2-alt">
-  </div>
+      <img @click="changePoster(2)" :src="poster1.banner" alt="Ad" class="poster1-alt d-none" id="poster1-alt">
+      <img @click="changePoster(2)" :src="poster2.banner" alt="Ad" class="poster2-alt d-none" id="poster2-alt">
+    </div>
 
 
   </div>
@@ -98,11 +98,10 @@ function changePoster(poster) {
   z-index: 1;
 }
 
-.poster1-alternate {
-  // position: absolute;
-  // top: 50%;
-  // width: 10dvh;
-  // left: 2.2dvh;
-  // z-index: 1;
-}
-</style>
+// .poster1-alternate {
+//   // position: absolute;
+//   // top: 50%;
+//   // width: 10dvh;
+//   // left: 2.2dvh;
+//   // z-index: 1;
+// }</style>

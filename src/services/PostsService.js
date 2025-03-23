@@ -4,6 +4,16 @@ import { Post } from "@/models/Post.js"
 import { AppState } from "@/AppState.js"
 
 class PostsService{
+  async search(query) {
+    const response = await api.get(`api/posts?query=${query}`)
+    logger.log(response.data)
+
+      const posts = response.data.posts.map(pojo => new Post(pojo))
+      AppState.posts = posts
+      AppState.page = response.data.page
+      AppState.maxPage = response.data.totalPages
+    
+  }
   async changeProfilePostPage(direction) {
     const amount = AppState.profilePagesShownPerPage
     if (direction == null) {
