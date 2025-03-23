@@ -111,6 +111,10 @@ async changePostPage(direction) {
     await api.delete(`api/posts/${postID}`) // const response unneeded here
     const postIndex = AppState.posts.findIndex(post => post.id == postID)
     AppState.posts.splice(postIndex, 1)
+
+    // Deletes it from profile post content array if there is one
+    const profilePostIndex = AppState.profilePostPageContent.findIndex(post => post.id == postID)
+    AppState.profilePostPageContent.splice(profilePostIndex, 1)
   }
   async getPosts(){
     const response = await api.get('api/posts')
@@ -137,7 +141,10 @@ async changePostPage(direction) {
   }
   async postPost(value) {
     const response = await api.post(`api/posts`, value)
-    AppState.posts.push(new Post(response.data))
+    AppState.posts.unshift(new Post(response.data))
+    this.getPosts()
+     // TODO find a way to push it to the very top
+    // NOTE unshift will push to front and push does to back of array
   }
 
 }

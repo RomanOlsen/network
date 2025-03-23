@@ -98,10 +98,18 @@ function changePoster(poster) {
   z-index: 1;
 }
 
-// .poster1-alternate {
-//   // position: absolute;
-//   // top: 50%;
-//   // width: 10dvh;
-//   // left: 2.2dvh;
-//   // z-index: 1;
-// }</style>
+.poster1-alt {
+
+  // top: 50%;
+  width: 40%;
+  z-index: 1;
+  // left: 2.2dvh;
+}
+.poster2-alt {
+
+// top: 50%;
+width: 40%;
+z-index: 1;
+// left: 2.2dvh;
+}
+</style>

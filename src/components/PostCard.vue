@@ -28,9 +28,18 @@ async function likePost(postID) {
   }
 }
 
-async function deletePost(params) {
+async function deletePost(id, body) {
+
+  const confirmation = await Pop.confirm('Are you sure you want to delete this post?', 'Post: ' + body)
+
+  if (!confirmation) {
+    return
+  }
+
   try {
-    await postsService.deletePost(params)
+
+    await postsService.deletePost(id)
+    Pop.toast('Deleted.')
   }
   catch (error) {
     Pop.error(error);
@@ -55,7 +64,7 @@ async function deletePost(params) {
         </div>
         <div class="d-flex align-items-center">
           <span>Posted: {{ postProp.createdAt.toLocaleDateString() }}</span>
-          <button @click="deletePost(postProp.id)" v-if="account?.id == postProp.creatorId"
+          <button @click="deletePost(postProp.id, postProp.body)" v-if="account?.id == postProp.creatorId"
             class="btn btn-outline-danger ms-3">Delete post</button>
           <!-- Roman dont forget the question mark -->
 
@@ -69,8 +78,9 @@ async function deletePost(params) {
     <div class="card-footer bg-light">
 
       <div class="text-center">
-        <button v-if="account"  @click="likePost(postProp.id)" class="btn btn-pink px-5 rounded"> <span class="mdi mdi-heart"></span> {{
-          postProp.likes.length }} likes
+        <button v-if="account" @click="likePost(postProp.id)" class="btn btn-pink px-5 rounded"> <span
+            class="mdi mdi-heart"></span> {{
+              postProp.likes.length }} likes
         </button>
         <span v-else class="fw-bold fs-3">Log in to like this post!</span>
       </div>
