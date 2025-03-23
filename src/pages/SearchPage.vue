@@ -1,6 +1,7 @@
 <script setup>
 import { AppState } from '@/AppState.js';
 import PostCard from '@/components/PostCard.vue';
+import PreviousNext from '@/components/Previous&Next.vue';
 import { postsService } from '@/services/PostsService.js';
 import { Pop } from '@/utils/Pop.js';
 import { computed, onMounted, ref } from 'vue';
@@ -8,7 +9,8 @@ import { useRoute } from 'vue-router';
 
 // const route = useRoute()
 const searchData = ref('')
-const posts = computed(()=> AppState.posts)
+const posts = computed(() => AppState.posts)
+const pages = computed(() => AppState.page)
 
 onMounted(() => AppState.posts = [])
 
@@ -42,9 +44,13 @@ async function search() {
         </div>
       </div>
       <div class="col-12 mt-3" v-for="post in posts" :key="post.id">
-          <PostCard :post-prop="post" />
+        <PostCard :post-prop="post" />
 
-        </div>
+      </div>
+      <div class="col-12" v-if="pages != 0">
+        <PreviousNext />
+      </div>
+
     </div>
   </div>
 

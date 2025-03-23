@@ -45,7 +45,7 @@ changePostPage(-1)
     </button>
     <div class="text-center">
       <div>Page</div>
-      <h1>{{ page }}</h1>
+      <h1>{{ page }} of {{ maxPage }}</h1>
     </div>
     <button :disabled="page >= maxPage" @click="changePostPage(1)" class="btn btn-outline-light">Less Recent
       <span class="mdi mdi-arrow-right"></span>

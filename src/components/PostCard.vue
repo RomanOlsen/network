@@ -69,9 +69,10 @@ async function deletePost(params) {
     <div class="card-footer bg-light">
 
       <div class="text-center">
-        <button @click="likePost(postProp.id)" class="btn btn-pink px-5 rounded"> <span class="mdi mdi-heart"></span> {{
+        <button v-if="account"  @click="likePost(postProp.id)" class="btn btn-pink px-5 rounded"> <span class="mdi mdi-heart"></span> {{
           postProp.likes.length }} likes
         </button>
+        <span v-else class="fw-bold fs-3">Log in to like this post!</span>
       </div>
     </div>
   </div>
