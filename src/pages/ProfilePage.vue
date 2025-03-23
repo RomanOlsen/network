@@ -90,9 +90,12 @@ async function viewProfile() {
         </div>
         <h1 v-else> Loading... </h1>
       </div>
-      <div class="col-12 mt-3" v-for="post in profilePost">
-        <PostCard :post-prop="post" />
+      <!-- ANCHOR unsure if this v-if helps at all -->
+      <div v-if="profilePost">
+        <div class="col-12 mt-3" v-for="post in profilePost">
+          <PostCard :post-prop="post" />
 
+        </div>
       </div>
       <div class="col-12">
         <PreviousNext />

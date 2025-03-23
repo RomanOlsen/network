@@ -7,24 +7,36 @@ class PostsService{
   async changeProfilePostPage(direction) {
     const amount = AppState.profilePagesShownPerPage
     AppState.page += direction
-    console.log(AppState.page);
+    console.log('pages', AppState.page);
     const skipAmount = (AppState.page * amount) - amount
-    console.log(skipAmount);
+    console.log('skip amount', skipAmount);
     
     // const currentShown = AppState.posts[skipAmount]
     // const currentShown2 = AppState.posts[skipAmount + 1]
-    
-    // console.log(currentShown, currentShown2);
+    // const currentShown3 = AppState.posts[skipAmount + 2]
+    // const currentShown4 = AppState.posts[skipAmount + 3]
+    // const currentShown5 = AppState.posts[skipAmount + 4]
+
+    // console.log(currentShown, currentShown2, currentShown3, currentShown4, currentShown5);
+
+
 AppState.profilePostPageContent = []
     for (let index = skipAmount; index < (skipAmount+amount); index++) {
+      if (AppState.posts[index] == undefined) { // ANCHOR all i had to do was move this before NewCard const....took me like 40mins to see
+        return
+      }
       const newCard = AppState.profilePostPageContent.push(AppState.posts[index])
-      console.log(newCard);
+      // console.log(newCard);
+      console.log(index)
       
-      // if (AppState.posts[index].value == null) {
-      //   return
-      // }
       
     }
+
+// ANCHOR seperate method from first forloop AppState.profilePostPageContent.push(AppState.posts[skipAmount + 1])
+
+
+
+
     logger.log(AppState.profilePostPageContent)
 
   }
@@ -65,7 +77,7 @@ AppState.maxPage = newPageCount
 
 
 
-  logger.log(newPageCount) 
+  logger.log('total pages here is ', newPageCount) 
   
 
   }
