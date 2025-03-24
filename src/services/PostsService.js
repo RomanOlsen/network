@@ -57,44 +57,46 @@ AppState.profilePostPageContent = []
   }
   
   async getProfilePosts(id) {
-    const response = await api.get(`api/posts`) // ANCHOR use account path not posts! NVM
+    const response = await api.get(`api/posts?creatorId=${id}`) // ANCHOR use account path not posts! NVM
     // console.log('basic',response);
     // console.log(id);
     // console.log(response.data.totalPages);
 
-    const pageTotal = response.data.totalPages
-
+    // const pageTotal = response.data.totalPages
+    AppState.posts = response.data.posts.map(p => new Post(p))
+    AppState.page = response.data.page
+    AppState.maxPage = response.data.totalPages
 
 
 
     // ANCHOR felt like a genius!
-    for (let page = 1; page <= pageTotal; page++) {
-      const response = await api.get(`api/posts?page=${page}`)
+    // for (let page = 1; page <= pageTotal; page++) {
+    //   const response = await api.get(`api/posts?page=${page}`)
 
-      logger.log('im a for loop',response.data);
+    //   logger.log('im a for loop',response.data);
       
-       const posts = response.data.posts.map(pojo => new Post(pojo))
-      AppState.posts.push(...posts)
+    //    const posts = response.data.posts.map(pojo => new Post(pojo))
+    //   AppState.posts.push(...posts)
 
-      // AppState.posts.
-      // AppState.posts.
-    }
-console.log('This should be ALL posts', AppState.posts);
-
-
-   const profilePosts = AppState.posts.filter((element) => element.creatorId == id)
-   AppState.posts = profilePosts
-   console.log('profile posts', profilePosts);
-
-AppState.page = 1
-const newPageCount =   Math.ceil(AppState.posts.length / 5) // 5 per profile page page
-AppState.maxPage = newPageCount
+    //   // AppState.posts.
+    //   // AppState.posts.
+    // }
+// console.log('This should be ALL posts', AppState.posts);
 
 
+  //  const profilePosts = AppState.posts.filter((element) => element.creatorId == id)
+  //  AppState.posts = profilePosts
+  //  console.log('profile posts', profilePosts);
 
-  logger.log('total pages here is ', newPageCount) 
+// AppState.page = 1
+// const newPageCount =   Math.ceil(AppState.posts.length / 5) // 5 per profile page page
+// AppState.maxPage = newPageCount
+
+
+
+  // logger.log('total pages here is ', newPageCount) 
   
-this.changeProfilePostPage()
+// this.changeProfilePostPage()
 
   }
 async changePostPage(direction) {
